@@ -1,0 +1,113 @@
+<HacknetExtension>
+  <!-- 首先设置你的语言！
+  当前支持的语言列表：
+  英语 : en-us
+  德语 : de-de
+  法语 : fr-be
+  俄语 : ru-ru
+  西班牙语 : es-ar
+  韩语 : ko-kr
+  日语 : ja-jp
+  简体中文 : zh-cn
+  -->
+  <Language>zh-cn</Language>
+  
+  <!-- 名称最大长度为 128 个字符 -->
+	<Name>[CN]Intro Extension</Name>
+	<AllowSaves>true</AllowSaves>
+  
+  <!-- 一个以逗号分隔的、开始时就可见的节点列表-->
+  <StartingVisibleNodes>advExamplePC</StartingVisibleNodes>
+  
+  <!-- 玩家一开始就加载的任务（如果有的话） -->
+  <StartingMission>Missions/Intro/IntroMission1.xml</StartingMission>
+
+  <!-- 新会话创建时立即加载的条件动作集
+  这对于做一些设置工作很有用，比如给玩家程序、为他们分配派系等等。
+  如果不需要，把它设为 "NONE"，或者直接删除这个标签。-->
+  <StartingActions>Actions/StartingActions.xml</StartingActions>
+
+  <!-- 出现在 Hacknet 中的描述 -->
+  <Description> --- 入门扩展 ---
+这个示例扩展将教你构建 Hacknet 扩展的基础知识。
+描述可以写成多行，所以，我们已经开始学习了！</Description>
+  
+  <!-- 此扩展涉及的派系！你可以随意定义多或少 -->
+  <Faction>Factions/ExampleFaction.xml</Faction>
+  <Faction>Factions/IntroFaction.xml</Faction>
+   
+  <StartsWithTutorial>False</StartsWithTutorial>
+  
+  <!-- 这让扩展以标准的重启开机序列开始 -->
+  <HasIntroStartup>true</HasIntroStartup>
+  
+  <StartingTheme>Themes/ExampleTheme.xml</StartingTheme>
+  <!-- 
+  基础主题的名称如下：
+  TerminalOnlyBlack, HacknetBlue, HacknetTeal, HacknetYellow, HackerGreen, HacknetWhite, HacknetPurple, HacknetMint
+  -->
+  
+  <!-- 你可以在这里引用原版游戏中的歌曲，或按路径引用你自己的 .ogg 文件。
+  要引用原版歌曲，在文件中使用它们的名字即可！你不需要路径，只需要文件名。这适用于以下文件夹中的任何歌曲：
+  Content/Music
+  Content/DLC/Music
+  
+  要播放你自己的歌曲，使用该歌曲在扩展中的路径。
+  例如，试着把下面的歌曲名称改成 "Music/Chemical_Burns.ogg" —— 新存档就会改用它作为开始曲！ -->
+  <IntroStartupSong>The_Quickening</IntroStartupSong>
+
+  <!-- 扩展排序器（Extension Sequencer）指南字段。
+  当 ExtensionSequencer.exe 运行时，只有当玩家拥有 SequencerFlagRequiredForStart 中定义的标记时，它才能被激活。
+  如果运行了，它会加载 ActionsToRunOnSequencerStart 中的条件动作文件。
+  当 SequencerSpinUpTime 秒过去后，玩家会自动发现并连接到 SequencerTargetID 计算机。
+  这里定义的动作会在按钮被按下时立即运行，而不是等它启动完成后！
+  这样你就可以在它加载的同时做设置工作，如果你想的话，也可以提前半秒开始你的过渡效果之类的。
+  记住要按你定义的歌曲开头来延迟集合中任何相关的动作！
+  在这个例子中，我把主题切换等延迟了 10.5 秒，以配合排序器的启动时间。-->
+  <SequencerTargetID>advExamplePC</SequencerTargetID>
+  <SequencerSpinUpTime>10.5</SequencerSpinUpTime>
+  <SequencerFlagRequiredForStart>testFlag</SequencerFlagRequiredForStart>
+  <ActionsToRunOnSequencerStart>Actions/ThemeSwapActions.xml</ActionsToRunOnSequencerStart>
+  
+  
+  <!-- Steam 创意工坊字段 -->
+  <!-- 
+  public string WorkshopDescription;
+        public string WorkshopLanguage;
+        public byte WorhsopVisibility = 2;
+        public string WorkshopTags;
+        public string WorkshopPreviewImagePath;
+  -->
+  <WorkshopDescription>这是该扩展的描述，会显示在 Steam 创意工坊以及任何其他移植到的模组平台上。最长 8000 个字符。
+你可以在此正常使用换行等。</WorkshopDescription>
+
+  <!-- 该扩展所设置的语言。 -->
+  <WorkshopLanguage>Chinese</WorkshopLanguage>
+
+  <!-- 设置此物品在创意工坊上的可见性。
+  0 = 公开
+  1 = 仅好友
+  2 = 私有（仅自己）-->
+  <WorkshopVisibility>2</WorkshopVisibility>
+
+  <!-- 这个物品在创意工坊中应该归入哪些标签的逗号分隔列表。目前这个还没被使用，因为 Hacknet 中
+  唯一的创意工坊物品类别是 "Extension"，所以现在保持原样。-->
+  <WorkshopTags>Extension</WorkshopTags>
+
+  <!-- 你的扩展在 steam 创意工坊上使用的预览图片路径。
+  它必须位于你的模组文件夹内，长宽比为 1x1（正方形），大小小于 1MB。 
+  我推荐你能够提供的、符合这些标准的最大分辨率，
+  虽然 steam 很可能会使用小于 512x512 的版本，并会为你自动调整大小。
+  
+  如果你想的话，这可以与你提供的 Logo.png 不同，因为它在 steam 上不会有透明背景。
+  支持的格式是 .png、.jpg 和 .gif
+  -->
+  <WorkshopPreviewImagePath>WorkshopLogo.png</WorkshopPreviewImagePath>
+
+  <!-- 这是创意工坊发布 ID。你的扩展第一次发布到 Steam 时，这里会被自动填入 steam 分配给你的 ID。
+  发生这种情况时，请确保保留该版本的文件并把 ID 存在某个地方 —— 没有它，你就无法为你的扩展推送更新，
+  而且如果它被移除，发布到创意工坊会把它作为一个新条目提交，你会失去所有订阅者。小心！
+  除非你已经从之前的提交中知道你的发布 ID，否则不要手动修改它。只有当这里写着 "NONE" 时，才会生成新的 ID-->
+  <WorkshopPublishID>NONE</WorkshopPublishID>
+  
+</HacknetExtension>
