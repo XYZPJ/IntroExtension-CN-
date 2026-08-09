@@ -1,0 +1,15 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="testBranchDest">
+  <goals>
+    <!-- 没有目标意味着所有回复都能生效 -->
+  </goals>
+  <nextMission>NONE</nextMission>
+  <email>
+    <sender>Matt</sender>
+    <subject>你到达了分支任务！</subject>
+    <body>
+分支任务生效了！
+    </body>
+    <attachments></attachments>
+  </email>
+</mission>

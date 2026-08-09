@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="fbYesReply" activeCheck="true">
+  <goals>
+    <!-- 这个目标会在 5 秒后自动完成，让回复时间显得更自然！
+    记住还要注意，上面它把 activeCheck 设为了 true，所以它每帧都会检查，
+    否则玩家就得点击回复，但只能在 5 秒之后，那会非常令人困惑。-->
+    <goal type="delay" time="5.0"/>
+  </goals>
+  <missionEnd val="1">addRank</missionEnd>
+  <nextMission>NONE</nextMission>
+  <email>
+    <!-- 记住，在这里保持发件人一致非常重要！ -->
+    <sender>Matt</sender>
+    <subject>是分支回复</subject>
+    <body>你对任务回复了"是"，现在你在"是"分支上！
+这次不会对任何事情产生影响，但如果你想的话，可以让这些分支走向截然不同的剧情方向，
+或者做巧妙的事情，比如在这里添加标记等，让游戏记住玩家做了什么选择。
+
+以后用这些配合条件动作和标记检查来做各种事情！</body>
+    <attachments></attachments>
+  </email>
+</mission>

@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="fbNo">
+  <goals>
+    <goal type="getString" target="no"/>
+  </goals>
+  <nextMission>Missions/BranchExample/FacBranchNoReply.xml</nextMission>
+  <email>
+    <!-- 记住，在这里保持发件人一致非常重要！ -->
+    <sender>Matt</sender>
+    <subject>这个不会被看到</subject>
+    <body>这只是一个分支连接任务，所以这封邮件永远不会被玩家看到</body>
+    <attachments></attachments>
+  </email>
+</mission>
