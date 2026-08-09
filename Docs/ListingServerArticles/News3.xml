@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="news02">
+  <goals>
+  </goals>
+  <nextMission>NONE</nextMission>
+  <posting title="这个颜色选择有点难看">
+但不知为何我就是没法下决心改掉它。它就是那种难看得还挺吸引人的颜色。
+  </posting>
+  <email>
+    <sender>NONE</sender>
+    <subject>NONE</subject>
+    <body>NONE</body>
+    <attachments>
+    </attachments>
+  </email>
+</mission>

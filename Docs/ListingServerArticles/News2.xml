@@ -1,0 +1,19 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="news02">
+  <goals>
+  </goals>
+  <nextMission>NONE</nextMission>
+  <posting title="分配者技术">
+如果这里把 assigner 设为 true，你就可以接受这些任务！
+不过，仅靠这些帖子就非常有用，可以用这种样式的板子来做信息发布、剧情或研究目标。
+
+板子算法会尝试加载文件夹中的每个 xml 文件，所以只放你想要的文章，而且不要放计算机！
+  </posting>
+  <email>
+    <sender>NONE</sender>
+    <subject>NONE</subject>
+    <body>NONE</body>
+    <attachments>
+    </attachments>
+  </email>
+</mission>
