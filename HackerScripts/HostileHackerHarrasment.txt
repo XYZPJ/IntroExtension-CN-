@@ -1,0 +1,46 @@
+config [TARGET_COMP] [SOURCE_COMP] 0.2 $#%#$
+connect $#%#$
+delay 1.0 $#%#$
+writel  $#%#$
+writel  $#%#$
+writel  $#%#$
+writel  $#%#$
+writel  $#%#$
+writel  $#%#$
+delay 0.1 $#%#$
+writel  $#%#$
+writel  $#%#$
+writel 嘿！ $#%#$
+writel  $#%#$
+writel  $#%#$
+delay 3.0 $#%#$
+stopMusic $#%#$
+delay 1.0 $#%#$
+write 你 $#%#$
+write 觉得 $#%#$
+write 你 $#%#$
+write 在 $#%#$
+write 干 $#%#$
+write 什么 $#%#$
+write ？ $#%#$
+delay 2.3 $#%#$
+clearTerminal $#%#$
+delay 1.3 $#%#$
+writel  $#%#$
+writel 你留下了日志！ $#%#$
+writel 现在我的脚本抓到你了。。 $#%#$
+delay 1.3 $#%#$
+write .  $#%#$
+delay 0.3 $#%#$
+write .  $#%#$
+delay 0.3 $#%#$
+write .  $#%#$
+delay 0.3 $#%#$
+write .  $#%#$
+delay 0.3 $#%#$
+write .  $#%#$
+delay 2.3 $#%#$
+writel 开玩笑的，你可以走了。不过黑客脚本就是这样运作的！ $#%#$
+startMusic $#%#$
+delay 1.3 $#%#$
+disconnect $#%#$

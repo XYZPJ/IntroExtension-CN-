@@ -1,0 +1,80 @@
+config [TARGET_COMP] [SOURCE_COMP] 0.2 $#%#$
+writel 上面这一行末尾的 0.2 是脚本中动作之间的基准延迟 $#%#$
+writel 如果你想的话，可以在上面硬编码源和目标 IP 地址，但这会让你更动态地使用脚本。 $#%#$
+
+connect $#%#$
+writel connect 会让脚本从源计算机连接到目标计算机 $#%#$
+
+delay 2 $#%#$
+writel delay 会暂停执行那么多秒。在这个例子中是 2。 $#%#$
+
+openPort 21 $#%#$
+writel 在目标上打开一个端口！ $#%#$
+
+stopMusic $#%#$
+writel 如果目标是玩家，就停止玩家的音乐。 $#%#$
+
+startMusic $#%#$
+writel 如果玩家的音乐被停止且目标是玩家，就启动玩家的音乐。 $#%#$
+
+clearTerminal $#%#$
+writel 如果目标是玩家，就清空玩家的终端。 $#%#$
+
+write 你 $#%#$
+write 以为 $#%#$
+write 你 $#%#$
+write 是 $#%#$
+write 谁 $#%#$
+write ？ $#%#$
+writel 你可以像上面那样在同一行写出终端内容，或者像这句一样写一整行！ $#%#$
+
+write_silent 嘘 $#%#$
+writel_silent 这两个让你写出内容时不带提示音和闪烁 $#%#$
+
+writel $#%#$
+writel 一个空的 writeline 只是向终端输出换行。看起来很酷。 $#%#$
+
+hideNetMap $#%#$
+hideRam $#%#$
+hideDisplay $#%#$
+hideTerminal $#%#$
+writel 如果玩家连接着，这些命令会隐藏东西。非常小心 —— 玩家自己没法把它们弄回来。 $#%#$
+
+showNetMap $#%#$
+showRam $#%#$
+showDisplay $#%#$
+showTerminal $#%#$
+writel 这些命令会把窗口带回来 $#%#$
+
+trackseq $#%#$
+writel 这会做标记，让玩家在拥有 CSEC 标记的情况下，如果在下一次收到的 forkbomb 中失败，就必须做 ETAS (红条状态，让玩家去ISP改IP) $#%#$
+
+instanttrace $#%#$
+writel 这是一个残酷的命令，会立即为玩家启动 ETAS (红条状态，让玩家去ISP改IP) $#%#$
+
+forkbomb $#%#$
+writel 在目标上启动一个 forkbomb。如果目标不是玩家，会立即崩溃它。 $#%#$
+
+flash $#%#$
+writel 如果目标是玩家，会以戏剧性的方式闪烁 UI $#%#$
+
+delete /sys x-server.sys $#%#$
+writel 删除一个文件。你可以在这里指定任何文件夹和文件 $#%#$
+
+setAdminPass newpass  $#%#$
+writel 把这台计算机的管理员密码设为 'newpass' 或你设置的任何内容。 $#%#$
+
+makeFile home Filename.txt 第一个空格之后的所有内容都会进入该文件！ $#%#$
+writel 在第一个参数命名的文件夹中创建一个新文件（抱歉，不支持子文件夹），文件名为 Filename.txt，内容是所示的内容 $#%#$
+
+makeFile bin SSHCrack.exe #SSH_CRACK# $#%#$
+writel 你可以像这样添加程序。查看 ExampleComputer.xml 中的完整通配符名称列表 $#%#$
+
+openCDTray $#%#$
+writel 是的！ $#%#$
+
+delay 5 $#%#$
+
+closeCDTray $#%#$
+
+disconnect $#%#$
