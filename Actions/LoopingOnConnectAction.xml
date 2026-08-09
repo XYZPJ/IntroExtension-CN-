@@ -1,0 +1,21 @@
+<ConditionalActions>
+
+  <!-- 这是一个'循环'动作(Action)的例子 —— 它会在被触发后重新加载自身，以便能再次发生
+  通过加载它，它会对事物的运作方式产生永久性的改变。这个例子，如果你加载它，会让
+  玩家每次连接到特定计算机时主题自动改变，并在他们断开连接时改回来！-->
+  
+  <OnConnect target="advExamplePC" needsMissionComplete="false">
+    <SwitchToTheme ThemePathOrName="Themes/YuriTheme.xml" FlickerInDuration="-1.0" />
+    <LaunchHackScript Filepath="HackerScripts/TrapHack.txt" SourceComp="advExamplePC" TargetComp="playerComp" RequireLogsOnSource="false" RequireSourceIntact="false"/>
+  </OnConnect>
+
+  
+  <OnDisconnect target="advExamplePC">
+    
+    <SwitchToTheme ThemePathOrName="Themes/ExampleTheme.xml" FlickerInDuration="-1.0" />
+    <!-- 这是关键的一行。它重新加载这个文件本身，这样它就可以在玩家下次连接时再次执行。 -->
+    <AddConditionalActions Filepath="Actions/LoopingOnConnectAction.xml" />
+    
+  </OnDisconnect>
+  
+</ConditionalActions>

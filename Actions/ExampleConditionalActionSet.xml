@@ -1,0 +1,50 @@
+<ConditionalActions>
+  
+  <!-- 这些分组描述了其中包含的动作(Action)触发前必须满足的条件
+  
+  这个在玩家连接到 target 字段中 ID 的 PC 时检查。needsMissionComplete 和 reqiuredFlags 是可选的
+  你可以应用的其他检查。
+    -->
+  <OnConnect target="advExamplePC" needsMissionComplete="true" requiredFlags="decypher">
+    <!-- 你可以在这里放置任何在 ExampleFaction 文件中描述过的动作(Action) —— 就像这样！ -->
+    <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="2.1">嘿，你回来了，还刚刚完成了你的任务。</AddIRCMessage>
+    
+  </OnConnect>
+
+  <!-- 当玩家拥有 requiredFlags 中逗号分隔列表里的 *所有* 标记时触发 -->
+  <HasFlags requiredFlags="decypher,otherFlag">
+    <!--这里放要执行的动作(Action)-->
+    <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="0.1">有一些标记了！</AddIRCMessage>
+  </HasFlags>
+
+  <!-- 当玩家取得目标机器的管理员权限时触发 -->
+  <OnAdminGained target="advExamplePC">
+    <!--这里放要执行的动作(Action)-->
+    <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="2.1">哇，不错！你在示例服务器上拿到了管理员权限。</AddIRCMessage>
+  </OnAdminGained>
+
+  <!-- 这会在加载完成时立即触发！动作(Action)s会按它们在这个文件中出现的顺序执行。-->
+  <Instantly>
+    <!--这里放要执行的动作(Action)-->
+    <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="0.1">第一个！</AddIRCMessage>
+  </Instantly>
+
+  <Instantly needsMissionComplete="true">
+    <!--你也可以在 instantly Action 上使用 needs mission complete 标记-->
+    <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="0.3">第二个，如果任务完成了的话！</AddIRCMessage>
+  </Instantly>
+
+  <!-- 当玩家没有列表中的任何标记时触发 -->
+  <DoesNotHaveFlags Flags="SomeFlag,MoreFlags">
+    <!--这里放要执行的动作(Action)-->
+    <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="0.1">没有其他一些标记！</AddIRCMessage>
+  </DoesNotHaveFlags>
+
+  <!-- 当玩家从某个东西断开连接，或连接到他们自己的计算机时触发。
+       你可以移除 target 标签（或把它设为 "NONE"），让它在玩家从任何东西断开连接时触发。-->  
+  <OnDisconnect target="advExamplePC">
+    <!--这里放要执行的动作(Action)-->
+    <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="0.1">已断开连接！</AddIRCMessage>
+  </OnDisconnect>
+
+</ConditionalActions>

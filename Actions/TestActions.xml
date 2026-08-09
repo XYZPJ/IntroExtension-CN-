@@ -1,0 +1,24 @@
+<ConditionalActions>
+  
+  <!-- 这会在加载完成时立即触发！动作(Action)会按它们在这个文件中出现的顺序执行。-->
+  <Instantly>
+    
+    <!-- 在开发扩展时，在一个较早的任务上放一个条件动作(Action)会很有用（这个在 IntroMission1.xml 开始时加载）
+    我在开发期间用它来做测试！
+    
+    
+    其他方便的开发者技巧：从你最早的某个任务中放一个分支任务，带一个 getString 目标，让你直接跳到结局，或任何你想要的地方。
+    这很方便，因为你可以把它保留下来进行常规测试，只在正式发布时才移除。
+    
+    我还强烈建议制作一个测试服务器，上面放一堆程序，或者你在测试的任何守护进程，放在一个容易连接的名称下。
+    基础游戏 Hacknet 使用 "test" —— 你甚至仍然可以用 "connect test" 直接到那里！
+    -->
+    
+    <!-- 下面的这个动作(Action)是一个'循环'动作的例子 —— 一个在完成执行后重新加载自身，以便能再次发生的动作。 -->
+    <!--
+    <AddConditionalActions Filepath="Actions/LoopingOnConnectAction.xml" />
+    -->
+    
+  </Instantly>
+
+</ConditionalActions>

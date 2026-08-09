@@ -1,0 +1,21 @@
+<ConditionalActions>
+  
+  <!-- 这会在加载完成时立即触发！Action(行动)会按它们在这个文件中出现的顺序执行。-->
+  <Instantly>
+    
+    <StartScreenBleedEffect AlertTitle="AlertTitle" CompleteAction="Actions/HackerScriptActions.xml" TotalDurationSeconds="12.5" DelayHost="advExamplePC" Delay="10.5">第一行
+第二行
+没人帮你！</StartScreenBleedEffect>
+    
+    <SwitchToTheme ThemePathOrName="HacknetPurple" FlickerInDuration="3.0" DelayHost="advExamplePC" Delay="10.5" />
+    
+    
+    <CancelScreenBleedEffect DelayHost="advExamplePC" Delay="15.5"/>
+    
+    <KillExe DelayHost="advExamplePC" Delay="15.5" ExeName="sequencer" />
+    
+    <SwitchToTheme ThemePathOrName="Themes/YuriTheme.xml" FlickerInDuration="2.0" DelayHost="advExamplePC" Delay="19.5" />
+    
+  </Instantly>
+
+</ConditionalActions>

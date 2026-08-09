@@ -1,0 +1,16 @@
+<ConditionalActions>
+  
+  <OnConnect target="hackerTarget" needsMissionComplete="false" >
+    <!-- 加载下面定义的黑客脚本，让它在从现在起 5.5 秒后执行，来源为 advExamplePC，目标为 playerComp（玩家节点 ID）。
+    这些可以针对任何你想要的目标，也可以是盟友脚本！RequireLogsOnSource 意味着只有当源计算机上有玩家删除、
+    移动或复制文件的日志时，脚本才会执行。你可以用 ID 或 IP 作为来源和目标 —— 两者都可以。
+    RequireSourceIntact 意味着如果目标缺少 /sys 中的网络文件，黑客攻击就不会发生。这意味着一台被废掉的计算机不能反过来黑你。-->
+    <LaunchHackScript Filepath="HackerScripts/AllyHack.txt" DelayHost="advExamplePC" Delay="2.5" SourceComp="allyHackerSource" TargetComp="hackerTarget" RequireLogsOnSource="false"/>
+  </OnConnect>
+
+  
+  <OnConnect target="introFactionHomeNode" needsMissionComplete="true">
+    <LaunchHackScript Filepath="HackerScripts/HostileHackerHarrasment.txt" SourceComp="hackerTarget" TargetComp="playerComp" RequireLogsOnSource="true" RequireSourceIntact="true"/>
+  </OnConnect>
+  
+</ConditionalActions>
