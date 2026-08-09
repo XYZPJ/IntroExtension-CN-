@@ -1,0 +1,18 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="news01">
+  <goals>
+  </goals>
+  <nextMission>NONE</nextMission>
+  <posting title="这是文章的标题">
+而这里是正文！
+你可以在这里写任何内容。
+它借用任务格式，因为有可能让这些服务器实际上把这些分配为任务。
+  </posting>
+  <email>
+    <sender>NONE</sender>
+    <subject>NONE</subject>
+    <body>NONE</body>
+    <attachments>
+    </attachments>
+  </email>
+</mission>
