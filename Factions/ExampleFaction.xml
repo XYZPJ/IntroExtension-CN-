@@ -1,0 +1,157 @@
+  <CustomFaction name="示例派系" id="examplefaction" playerVal="0">
+    <!-- 你可以通过上面的 playerVal 字段更改起始玩家数值。 -->
+  
+    <!-- 一个派系基本上只是几样东西：
+    一个名称，一个代表玩家在派系中位置的数字，
+    以及一组可以触发来响应动作、更改游戏状态的动作。-->
+
+    <!-- 数值需求条件动作是最基本的。它会在玩家的数值从低于这个数字变为等于或超过它时触发一次。 -->
+    <Action ValueRequired="1">
+      <!-- 运行一个'任务函数' —— 要了解这些函数的列表及用法，参见示例任务文件 -->
+      <RunFunction FunctionName="changeSong" FunctionValue="6" />
+
+      <!-- 立即加载一个任务，替换当前正在进行的任何内容并发送邮件。 -->
+      <LoadMission MissionName="Missions/ExampleMission.xml" />
+    
+      <!-- 在 ID 为 targetComp 的计算机上，于指定文件夹路径中创建一份内容为所列内容的文件。
+      指定的文件夹必须在该动作运行之前存在！
+      这里的文件内容字段不支持换行或超长内容 —— 这只推荐用于创建带通配符数据的物品（比如程序）
+      要了解完整的通配符列表，参见示例计算机文件-->
+      <AddAsset FileName="MemForensics.exe" FileContents="#MEM_FORENSICS_EXE#" TargetComp="advExamplePC" TargetFolderpath="bin" />
+  
+      <!-- 这会把一个文件从一台计算机复制到另一台计算机。
+      DestFilePath + DestComp 是目标计算机 —— 文件最终会到的地方
+      SourceFileName、SourceFilePath 和 SourceComp 是源计算机 —— 文件存在并被取走的地方
+      如果待复制的文件不存在，此动作将不做任何事。
+    
+      这对于在会话创建后向服务器添加复杂文件非常有用 —— 创建一个无法发现的隐藏新服务器，
+      在上面定义所有你想要的文件，然后在之后把它们复制到你想要的位置。 -->
+      <CopyAsset DestFilePath="linkNode1" DestComp="advExamplePC" SourceComp="advExamplePC" SourceFileName="Test_File.txt" SourceFilePath="home" />
+  
+      <!-- 这会给一个枢纽服务器添加新任务。它既适用于 missionHubServer 服务器（CSEC 风格）、missionListingServers（Entropy 风格），
+      也适用于 DHSDaemon 服务器（Bibliotheque 风格）-->
+      <!-- CSEC 风格： -->
+      <AddMissionToHubServer MissionFilepath="Missions/TestExtensionMission1.xml" TargetComp="advExamplePC" />
+      <!-- Bibliotheque 风格：Assignment 标签表示该任务开始时指派给服务器用户列表中的谁。如果存在此标签，玩家就不能领取该任务！ -->
+      <!-- 注意，向 entropy 风格的服务器添加任务时，你可以把 AssignmentTag 设为 "top" 以添加到列表顶部。否则会添加到底部。-->
+      <AddMissionToHubServer MissionFilepath="Missions/TestExtensionMission1.xml" TargetComp="advExamplePC" AssignmentTag="HA0"/>
+    
+      <!-- 如果存在，这会从枢纽服务器上移除该任务。适用于上面提到的全部三种服务器。 -->
+      <RemoveMissionFromHubServer MissionFilepath="Missions/TestExtensionMission1.xml" TargetComp="advExamplePC" />
+    
+      <!-- 向一个 /el 留言板添加一条帖子 —— 帖子文件应为 UTF-8 纯文本文档。 -->
+      <AddThreadToMissionBoard ThreadFilepath="Nodes/MessageBoardThreads/ExampleThread1.txt" TargetComp="advExamplePC" />
+    
+      <!-- 向 DHSDaemon 或 IRCDaemon 的 IRC 添加一条消息。Delay 是消息出现前的秒数。 -->
+      <AddIRCMessage Author="HA0" TargetComp="advExamplePC" Delay="3.0">嘿 @#PLAYERNAME# —— 看看几行前刚添加的新资产。</AddIRCMessage>
+      <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="8.0">@channel 这会通知所有人！</AddIRCMessage>
+    
+      <!-- 崩溃 ID 为 TargetComp 的计算机。如果它是 "playerComp"，会立即崩溃玩家自己的计算机（蓝屏）。
+      如果是另一台计算机，这会把它从网络地图上移除约 15 秒，如果玩家正连接着它，也会断开玩家的连接。
+      CrashSource 是崩溃日志将指向的计算机 ID。
+      注意：玩家非常可能 rm * 整个日志文件夹，所以不要把这一步做成任何关键路径的一部分 —— 它几乎不可能被找到。只做秘密用途！
+    
+      **** DelayHost 是一个可以托管可延迟动作的计算机 ID。有效的计算机上必须有以下守护进程之一：
+      IRCDaemon 或 DLCHubServer -->
+      <CrashComputer TargetComp="linkNode1" CrashSource="advExamplePC" DelayHost="advExamplePC" Delay="5.5" />
+  
+      <!-- 从目标计算机上删除一个文件。如果该文件不存在，则不做任何事。 -->
+      <DeleteFile TargetComp="advExamplePC" FilePath="bin" FileName="Binary_File" DelayHost="advExamplePC" Delay="5.5"/>
+    
+      <!-- 从文件加载一组新的条件动作。查看此处列出的文件，了解你可以用它做什么 -->
+      <AddConditionalActions Filepath="ExampleConditionalActionSet.xml" DelayHost="advExamplePC" Delay="5.5"/>
+    
+      <!-- 加载下面定义的黑客脚本，让它在从现在起 5.5 秒后执行，来源为 advExamplePC，目标为 playerComp（玩家节点 ID）。
+      这些可以针对任何你想要的目标，也可以是盟友脚本！RequireLogsOnSource 意味着只有当源计算机上有玩家删除、
+      移动或复制文件的日志时，脚本才会执行。你可以用 ID 或 IP 作为来源和目标 —— 两者都可以。
+      RequireSourceIntact 意味着如果目标缺少 /sys 中的网络文件，黑客攻击就不会发生。这意味着一台被废掉的计算机不能反过来黑你。-->
+      <LaunchHackScript Filepath="HackerScripts/ExampleHack.txt" DelayHost="advExamplePC" Delay="5.5" SourceComp="advExamplePC" TargetComp="playerComp" RequireLogsOnSource="false" RequireSourceIntact="true"/>
+    
+      <!-- 切换到列出的主题。你可以直接按名称指定任何核心 Hacknet 主题：
+      TerminalOnlyBlack, HacknetBlue, HacknetTeal, HacknetYellow, HacknetWhite, HacknetPurple, HacknetMint, HackerGreen 
+      或者你可以指定一个自定义主题文件的路径。-->
+      <SwitchToTheme ThemePathOrName="Themes/ExampleTheme.xml" FlickerInDuration="3.0" DelayHost="advExamplePC" Delay="15.5" />
+
+      <!-- 启动一个'屏幕渗血'效果！红条会戏剧性地从屏幕顶部向下移动。
+      这个标签的标题和前 3 行内容会显示在左下角的警报窗口中。
+      只有当红条到达屏幕底部且玩家耗尽时间时，CompleteAction 条件动作集才会运行。
+      "TotalDurationSeconds" 是屏幕渗血从顶部到底部所需的总时间。
+    
+      我建议把它与各种其他条件同步起来，这样如果玩家完成了某个任务，你就可以取消这个效果。-->
+      <StartScreenBleedEffect AlertTitle="标题" CompleteAction="Actions/HackerScriptActions.xml" TotalDurationSeconds="12.5" DelayHost="advExamplePC" Delay="3.5">第一行
+  第二行
+  第三行，没人帮你！</StartScreenBleedEffect>
+
+      <!-- 取消用上面的标签启动的屏幕渗血效果 -->
+      <CancelScreenBleedEffect DelayHost="advExamplePC" Delay="9.5" />
+    
+      <!-- 把标签的内容追加到指定文件的末尾。适用于向东西里添加额外数据、让世界感觉更动态、把人物添加到白名单等。 -->
+      <AppendToFile DelayHost="advExamplePC" Delay="12.5" TargetComp="advExamplePC" TargetFolderpath="Whitelist" TargetFilename="list.txt">#PLAYER_IP#</AppendToFile>
+  
+      <!-- 杀死所有包含所提到字符串的 exe，或用 * 表示全部。
+      这是大小写不敏感的。所以下面这个会杀死 "SSHCrackExe"，
+      但如果把它改成 "s"，则会杀死所有名称中含 s 的 exe。
+    
+      这对于做诸如杀死运行中的 ESequencer.exe，
+      或让敌对黑客关闭玩家的所有 shell 等事情很有用。-->
+      <KillExe DelayHost="advExamplePC" Delay="15.5" ExeName="ssh" />
+  
+      <!-- 这是个大动作 —— 更改警报图标（右上角）指向一个新的服务器！
+      Target 是它应连接的服务器 ID。
+      Type 可以是 4 个选项之一：
+      mail, irc, irchub, board
+    
+      Mail 是一个邮件服务器，比如 Jmail。如果你使用它，它指向的邮件服务器 *必须有一个玩家的邮件账户*
+      如果没有，当玩家点击图标并试图进入他们不存在的账户时，游戏会崩溃。
+    
+      irc 是一个标准 IRC 服务器。每当添加一条包含 @#PLAYERNAME# 或 @Channel 的 IRC 日志时，玩家会收到通知。
+      仅限 Labyrinths 用户。
+    
+      irchub 是一个像 Labyrinths 使用的 DLCHubServer。仅限 Labyrinths 玩家。
+    
+      board 是一个 /el 风格留言板。每当添加包含上述任一 IRC 提及字符串的消息或帖子时，玩家会收到通知。
+    
+      重要提示：把类型改成 mail 以外的任何类型，只在安装了 Hacknet Labyrinths DLC 时才受支持。
+      -->
+      <ChangeAlertIcon Target="advExamplePC" Type="mail" DelayHost="advExamplePC" Delay="9.5"/>
+
+
+      <!-- 如果目标计算机节点在网络地图上可见，则隐藏它 -->
+      <HideNode DelayHost="advExamplePC" Delay="15.5" TargetComp="advExamplePC" />
+
+      <!-- 向玩家展示这个用户账户，让它的详细信息出现在登录时自动补全的选项中。 -->
+      <GivePlayerUserAccount DelayHost="advExamplePC" Delay="15.5" TargetComp="advExamplePC" Username="mailGuy" />
+    
+      <!-- 把 targetComp 中 ID 为的计算机的 IP 地址改成提供的新 IP 地址 -->
+      <ChangeIP DelayHost="advExamplePC" Delay="15.5" TargetComp="advExamplePC" NewIP="111.111.123.124" />
+
+      <!-- 更改玩家的网络地图排序方式，就像他们用过 NetmapOrganizer 一样。有效方式有：
+      scatter,grid,seqgrid,CHAOS-->
+      <ChangeNetmapSortMethod DelayHost="advExamplePC" Delay="18.5" Method="grid" />
+
+      <!-- 保存游戏！玩家应该被频繁保存，以防他们的电源挂掉什么的。如果你有极长的任务，
+      没有邮件回复或任何其他保存触发点，用这个让玩家的存档保持最新。-->
+      <SaveGame DelayHost="advExamplePC" Delay="20.5"/>
+
+      <!-- 取消显示网络地图上的所有可见节点-->
+      <HideAllNodes DelayHost="advExamplePC" Delay="21.5"/>
+
+      <!-- 在网络地图上显示一个节点 -->
+      <ShowNode DelayHost="advExamplePC" Delay="21.5" Target="advExamplePC" />
+    
+    </Action>
+
+  
+    <!-- 这个动作在玩家被赋予 "decypher" 标记时立即触发 -->
+    <Action Flags="decypher">
+      <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="8.0">decypher 标记被添加了！</AddIRCMessage>
+    </Action>
+
+  
+    <!-- 而这个只在玩家同时拥有该标记、且分数大于或等于所需数值时触发一次 -->
+    <Action ValueRequired="5" Flags="decypher">
+       <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="-8.0">负延迟会立即添加，并回溯时间以使其全部对上。</AddIRCMessage>
+    </Action>
+
+
+  </CustomFaction>
