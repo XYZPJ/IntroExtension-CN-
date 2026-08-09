@@ -2,7 +2,7 @@
   
   <!-- 这会在加载完成时立即触发！动作会按它们在这个文件中出现的顺序执行。-->
   <Instantly>
-    <!--这里放要执行的动作-->
+    <!--这里放要执行的动作(Action)-->
     <AddIRCMessage Author="DependableSkeleton" TargetComp="advExamplePC" Delay="0.1">恭喜你之前按下了演职员表按钮！</AddIRCMessage>
   </Instantly>
 
