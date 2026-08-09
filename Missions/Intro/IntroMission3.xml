@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="introMission3">
+  <goals>
+    <goal type="getstring" target="5678" />
+  </goals>
+  <nextMission>Missions/Intro/IntroMission4.xml</nextMission>
+  <email>
+    <sender>Matt</sender>
+    <subject>高级计算机</subject>
+    <body>Nodes/ExampleComputer.xml 中定义的计算机本质上是一份计算机参考指南。它包含了计算机所支持的所有功能，以及每个功能如何使用的一一说明。
+
+它已链接在下方，这样你就可以看到所有东西是如何组合在一起的。请注意那里内容非常多 —— 这不是一台常规的计算机，而是对 *所有* 可用功能的演示。
+一个很好的使用方式是，复制粘贴其中你想要用在自己计算机上的相关部分，然后在此基础上进行修改。
+
+通读一下这份文件，并比较一下文件格式是如何转化为游戏里看得见摸得着的东西的。
+
+当你觉得自己理解得足够多、可以继续前进时，在这里回复那台计算机的追踪计时器具体是多少秒。
+-M
+</body>
+    <attachments>
+      <link comp="advExamplePC" />
+    </attachments>
+  </email>
+</mission>

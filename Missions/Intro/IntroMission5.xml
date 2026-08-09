@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="introMission5">
+  <goals>
+  </goals>
+  <nextMission>Missions/Intro/IntroMission6.xml</nextMission>
+  <email>
+    <sender>Matt</sender>
+    <subject>派系</subject>
+    <body>计算机和任务是 Hacknet 的核心组成部分，而派系则同时使用这两套系统来构建一个更动态的世界，并给玩家更多选择。
+    
+从根本上说，一个派系就是一组动作和对世界的改变，当玩家达到某些里程碑时就会触发。它们通常附带一个 "枢纽" 服务器，由这些动作向其中填充任务，以及/或者一个资源或奖励服务器，会填充工具等以帮助玩家推进进度。
+当然，派系系统可以按你的任何想法来使用 —— 它不局限于这些东西，还可以用来监听玩家的选择、追踪游戏状态，以及许多其他用途。
+
+描述所有可用功能的 ExampleFaction.xml 文件位于 IntroExtension/Factions 文件夹中。
+
+当你觉得自己掌握得差不多时，在这里回复。这次不需要任何文字。
+    
+-M
+</body>
+    <attachments>
+      <note title="重要：包含派系">要让一个派系生效，它 *必须* 在扩展元数据中被定义，这样它才能在存档创建时被生成。使用 "Faction" 标签即可。你可以在这个扩展的 ExtensionInfo.xml 中看到具体做法。
+      </note>
+    </attachments>
+  </email>
+</mission>

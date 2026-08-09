@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="introMission2">
+  <goals>
+    <goal type="filedownload" target="mission2TestNode" file="SSHCrack.exe" path="bin"/>
+    <goal type="filedownload" target="mission2TestNode" file="WebServerWorm.exe" path="bin"/>
+    <goal type="filedownload" target="mission2TestNode" file="SMTPOverflow.exe" path="bin"/>
+  </goals>
+  <nextMission>Missions/Intro/IntroMission3.xml</nextMission>
+  <email>
+    <sender>Matt</sender>
+    <subject>计算机基础</subject>
+    <body>干得漂亮 —— 那我们进入正题吧。
+    
+首先是，计算机。
+
+从这个扩展的根文件夹出发，进入 "Nodes/Intro" 文件夹。
+在那里，你可以找到定义下面所链接那台计算机的文件。它的文件名是：
+
+Mission2TestNode.xml
+
+把它打开，看看一台计算机是如何用 XML 定义的。如果你不了解 XML 是怎么工作的，别担心，后面会有相关的指南。
+现在，先熟悉一下这个格式，并试着辨认文件里的内容是如何对应到你在游戏里看到的东西的。
+
+下一步，在该文件中找到那台计算机的管理员密码，登录进去，并下载上面的程序。
+
+-M
+</body>
+    <attachments>
+      <link comp="mission2TestNode" />
+    </attachments>
+  </email>
+</mission>

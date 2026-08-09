@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="introMission3">
+  <goals>
+    <goal type="getstring" target="asdf" />
+  </goals>
+  <nextMission>Missions/Intro/IntroMission5.xml</nextMission>
+  <email>
+    <sender>Matt</sender>
+    <subject>任务</subject>
+    <body>和上一个任务中的示例计算机类似，我准备了一份 ExampleMission.xml 文件，概述了任务中可以包含的所有可能性。
+    
+你可以在 IntroExtension/Missions 文件夹中找到那个文件。
+
+再次提醒 —— 记住，这不是一份典型的任务文件 —— 在制作你自己的任务时，最好不要复制这份文件再去掉不需要的部分 —— 而是取一个较小的任务，再往里添加或修改你想要的内容，这样能保持整洁。
+这样就不会到处都是千篇一律的注释墙了。当然，这是你自己的选择。
+
+我不会把那个文件里的任务分配给你，因为它基本上不可能完成（目标实在太多了），但其中的注释应该会说明一切是如何运作的。
+
+当你觉得自己掌握得差不多时，回复要删除哪个文件的名称，即可完成该任务中的 "fileDeletion" 目标。
+
+-M
+</body>
+    <attachments>
+    </attachments>
+  </email>
+</mission>

@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="introMission5" activeCheck="true">
+  <goals>
+    <goal type="getadmin" target="factionEntryNode"/>
+  </goals>
+  <missionStart val="0">setFaction:introfac</missionStart>
+  <missionEnd val="1">addRank</missionEnd>
+  <nextMission>NONE</nextMission>
+  <email>
+    <sender>Matt</sender>
+    <subject>行动时间</subject>
+    <body>很好。基础内容就这些了。
+    
+我们把你连接到某个真实派系的枢纽服务器上，让你看看它是如何运作的。
+这个派系定义在文件 IntroExtension/Factions/IntroFaction.xml 中
+
+入侵链接的这台计算机以继续。
+
+-M
+</body>
+    <attachments>
+      <link comp="factionEntryNode" />
+    </attachments>
+  </email>
+</mission>

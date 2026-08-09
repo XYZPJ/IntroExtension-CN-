@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<mission id="introMission1">
+  <goals>
+    <goal type="getstring" target="DependableSkeleton" />
+  </goals>
+  <missionStart val="0">loadConditionalActions:Actions/TestActions.xml</missionStart>
+  <nextMission>Missions/Intro/IntroMission2.xml</nextMission>
+  <email>
+    <sender>Matt</sender>
+    <subject>欢迎使用 Hacknet 扩展</subject>
+    <body>嘿，
+感谢你查看这些模组工具。这个扩展将带你了解这些工具是如何工作的，并帮你开始自己的项目。
+在本教程中，我强烈建议你在窗口模式下游玩。
+
+每个扩展在 /Extensions 目录下都有一个文件夹，紧挨着 Hacknet.exe。
+该文件夹必须包含 ExtensionInfo.xml 才能被识别为模组 —— 它包含了基本的设置信息。
+
+你正在查看的这个扩展所在的文件夹是：
+#EXTENSION_FOLDER_PATH#
+
+要完成这个任务，请导航到那个文件夹，然后进入包含这个任务的子文件夹并打开它：
+Missions/Intro/IntroMission1.xml
+
+在该文件顶部，你会看到一个类型为 "getstring" 的目标。回复 "target" 字段中的文字即可继续。
+
+很高兴有你加入，
+-Matt
+</body>
+    <attachments>
+    </attachments>
+  </email>
+</mission>
